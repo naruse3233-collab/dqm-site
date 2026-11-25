@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ドラゴンクエストモンスターズ紹介サイト</title>
+  <style>
+    :root {
+      --bg1: #101a3c;
+      --bg2: #25366b;
+      --panel: rgba(17, 29, 66, 0.94);
+      --primary: #f7d76b;
+      --primary-dark: #ffe99a;
+      --accent: #66c9ef;
+      --text: #fff8df;
+      --line: #d7ad4d;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(102, 201, 239, 0.16), transparent 28%),
+        radial-gradient(ellipse at 85% 35%, rgba(247, 215, 107, 0.12), transparent 25%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 18px 60px;
+    }
+
+    .title {
+      margin: 0;
+      padding: 22px 20px;
+      text-align: center;
+      font-size: clamp(2rem, 3vw, 3rem);
+      color: #fff8df;
+      background: linear-gradient(135deg, #163d7a 0%, #246ca1 48%, #173c70 100%);
+      border: 5px double var(--primary);
+      border-radius: 14px;
+      box-shadow: 0 12px 30px var(--shadow), inset 0 0 24px rgba(102, 201, 239, 0.18);
+      letter-spacing: 0.08em;
+      text-shadow: 2px 3px 0 #10234a;
+      animation: title-arrive 0.8s ease-out both, title-glow 3s ease-in-out 0.8s infinite alternate;
+    }
+
+    .intro,
+    .reason,
+    .ranking {
+      margin-top: 24px;
+      padding: 26px 22px;
+      background: var(--panel);
+      border: 4px double var(--line);
+      border-radius: 14px;
+      box-shadow: 0 10px 24px var(--shadow), inset 0 0 0 2px rgba(255, 248, 223, 0.05);
+      animation: panel-arrive 0.7s ease-out both;
+    }
+
+    .intro { animation-delay: 0.15s; }
+    .reason { animation-delay: 0.3s; }
+    .ranking { animation-delay: 0.45s; }
+
+    @keyframes title-arrive {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes title-glow {
+      from { box-shadow: 0 12px 30px var(--shadow), inset 0 0 16px rgba(102, 201, 239, 0.12); }
+      to { box-shadow: 0 12px 34px rgba(102, 201, 239, 0.3), inset 0 0 28px rgba(102, 201, 239, 0.28); }
+    }
+
+    @keyframes panel-arrive {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro p {
+      margin: 0;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+
+    .photo {
+      display: block;
+      width: min(100%, 420px);
+      margin: 22px auto 0;
+      border: 5px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 0 22px rgba(102, 201, 239, 0.24);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      text-align: center;
+      color: var(--primary);
+      font-size: clamp(1.5rem, 2vw, 2.1rem);
+      text-shadow: 0 2px 8px rgba(247, 215, 107, 0.25);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    li {
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #1d376b 0%, #152953 100%);
+      border: 2px solid #6686bd;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    li:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    li::before {
+      content: "✦ ";
+      color: var(--primary);
+    }
+
+    .ranking-list {
+      display: grid;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .ranking-list li {
+      padding: 18px;
+    }
+
+    .ranking-list li::before {
+      content: none;
+    }
+
+    .ranking-list h3 {
+      margin: 0 0 12px;
+      color: var(--primary-dark);
+    }
+
+    .ranking-list img {
+      display: block;
+      width: min(100%, 240px);
+      height: auto;
+      margin: 0 auto 12px;
+      border: 4px solid var(--accent);
+      border-radius: 10px;
+      box-shadow: 0 0 18px rgba(102, 201, 239, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ranking-list img:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 0 26px rgba(102, 201, 239, 0.42);
+    }
+
+    .ranking-list p {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .official-link {
+      display: block;
+      width: fit-content;
+      margin: 24px auto 0;
+      padding: 12px 20px;
+      color: #172347;
+      background: linear-gradient(180deg, #ffe99a, #e6b94e);
+      border: 2px solid #fff0b8;
+      border-radius: 10px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 6px 14px var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .official-link:hover {
+      background: #fff0b8;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1 class="title">ドラゴンクエストモンスターズ紹介サイト</h1>
+
+    <section class="intro">
+      <p>これは私が好きなゲームの紹介サイトです。</p>
+      <img class="photo" src="HSG7JlhbMAE00_i.jpg" alt="モンスターのイメージ画像">
+      <p style="margin-top: 20px;">
+        ドラゴンクエストモンスターズは、ドラゴンクエストシリーズのスピンオフ作品で、モンスターを仲間にして育てることができるゲームです。<br>
+        この画像は新作の「モンスターズ4 枯れ木の国のビアンカ・フローラ」の新モンスターです。なんだか可愛いですね。
+      </p>
+    </section>
+
+    <section class="reason">
+      <h2>好きな理由</h2>
+      <ul>
+        <li>モンスターを仲間にできる</li>
+        <li>配合が楽しい（重要）</li>
+        <li>強いモンスターを作れる</li>
+      </ul>
+    </section>
+
+    <section class="ranking">
+      <h2>好きなモンスターランキング</h2>
+      <ol class="ranking-list">
+        <li>
+          <h3>1位　わたぼう</h3>
+          <img src="dqm3watbt.jpg" alt="わたぼう">
+          <p>
+            DQM（モンスターズ）を象徴するモンスターで、とてもかわいいです。
+            私が初めてプレイしたモンスターズでも相棒枠で、思い出があります。
+          </p>
+        </li>
+        <li>
+          <h3>2位　スライム</h3>
+          <img src="wp1926031.jpg" alt="スライム">
+          <p>
+            ドラゴンクエストといえばスライムです。
+            序盤のザコというイメージですが、作品によっては強いです。
+          </p>
+        </li>
+        <li>
+          <h3>3位　チンチロむし</h3>
+          <img src="HSG7JlhbMAE00_i.jpg" alt="チンチロむし">
+          <p>
+            新作の「モンスターズ4 枯れ木の国のビアンカ・フローラ」の新モンスターです。
+            体験版にいきなり出てきたのですが、名前と見た目のインパクトで気に入りました。
+          </p>
+        </li>
+      </ol>
+      <a class="official-link" href="https://www.dragonquest.jp/monsters4/" target="_blank" rel="noopener noreferrer">
+        ドラゴンクエストモンスターズ4 公式サイト
+      </a>
+    </section>
+  </div>
+</body>
+</html>
